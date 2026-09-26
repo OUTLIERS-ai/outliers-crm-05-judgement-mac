@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><title>Layer 5 &middot; Judgement</title><style>
+  @page { size: A4; margin: 0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --paper:#F3EEE3; --vellum:#E7DEC9; --ink:#14110C; --ox:#6E1A18; --brass:#B08A3E; }
+  body { font-family: Constantia, Georgia, serif; color:var(--ink); background:var(--paper); }
+  .page { width:210mm; height:296mm; padding:20mm 22mm; background:var(--paper);
+          page-break-after:always; position:relative; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .mono { font-family: Consolas,"Courier New",monospace; letter-spacing:.16em; text-transform:uppercase; }
+  .label { font-size:8.5pt; color:var(--brass); margin-bottom:3mm; }
+  h1 { font-size:34pt; font-weight:bold; line-height:1.1; }
+  h2 { font-size:19pt; font-weight:bold; margin-bottom:3mm; line-height:1.18; }
+  h3 { font-family:Consolas,monospace; font-size:8pt; letter-spacing:.16em; text-transform:uppercase;
+       color:var(--brass); margin:6mm 0 1.5mm 0; }
+  .deck { font-size:11pt; line-height:1.45; color:var(--ox); margin-bottom:5mm; }
+  p { font-size:10.5pt; line-height:1.5; margin-bottom:3mm; }
+  li { font-size:10.5pt; line-height:1.5; margin-bottom:1.5mm; margin-left:5mm; }
+  .two { display:flex; gap:8mm; margin-top:4mm; }
+  .two > div { flex:1; }
+  figure { margin:5mm 0; }
+  .cap { font-family:Consolas,monospace; font-size:7pt; letter-spacing:.1em; text-transform:uppercase;
+         color:var(--brass); text-align:center; margin-top:2mm; }
+  .box { border-left:2mm solid var(--ox); background:var(--vellum); padding:3.5mm 4.5mm; margin-top:5mm; }
+  .box .mono { font-size:7.5pt; color:var(--ox); display:block; margin-bottom:1.2mm; }
+  .box p { margin:0; }
+  .cmd { font-family:Consolas,monospace; font-size:9.5pt; background:var(--ink); color:var(--paper);
+         padding:3mm 4mm; margin:3mm 0; line-height:1.6; }
+  .footer { position:absolute; bottom:10mm; left:22mm; right:22mm; display:flex;
+            justify-content:space-between; font-size:7pt; color:var(--brass); }
+  .pgno { font-family:Consolas,monospace; font-size:7pt; letter-spacing:.1em; color:var(--brass); }
+  .pos { position:absolute; top:19mm; right:22mm; width:48mm; }
+  .rule { border:none; border-top:.3mm solid var(--ink); opacity:.25; margin:5mm 0; }
+  .cover { display:flex; flex-direction:column; justify-content:space-between; text-align:center; padding-top:44mm; }
+  .cover .word { font-size:24pt; font-weight:bold; letter-spacing:.3em; margin-top:9mm; }
+  .cover h1 { margin-top:14mm; }
+  .cover .sub { font-size:12pt; color:var(--ox); margin-top:5mm; line-height:1.5; }
+  table { width:100%; border-collapse:collapse; margin-top:3mm; }
+  th { font-family:Consolas,monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase;
+       color:var(--brass); text-align:left; padding:1.8mm 2mm; border-bottom:.4mm solid var(--ink); }
+  /* Table padding is load-bearing on page 5, which carries the glossary and is the longest page
+     in every guide. The page is a fixed 296mm with overflow:hidden -- content past the bottom is
+     DELETED, not reflowed -- and Layer 8 was overflowing it. Anything that adds vertical space
+     here can silently cost a reader the last row of the glossary, so re-run
+     check_guide_overflow.py after touching this rule. */
+  td { font-size:9.5pt; line-height:1.36; padding:1.7mm 2mm; border-bottom:.2mm solid rgba(20,17,12,.2); vertical-align:top; }
+  td.k { width:38mm; font-weight:bold; }
+  text { font-family:Consolas,"Courier New",monospace; }
+  .t  { font-size:9.2px; letter-spacing:.05em; fill:#14110C; }
+  .tb { font-size:9.2px; letter-spacing:.12em; fill:#B08A3E; }
+  .tx { font-size:9.2px; letter-spacing:.05em; fill:#6E1A18; }
+  .ts { font-size:8px;   letter-spacing:.05em; fill:#14110C; opacity:.8; }
+  .tw { font-size:9.2px; letter-spacing:.05em; fill:#F3EEE3; }
+  .tsw{ font-size:8px;   letter-spacing:.05em; fill:#F3EEE3; }
+  .tsb{ font-size:8px;   letter-spacing:.12em; fill:#B08A3E; }
+
+  .c { font-family:Consolas,monospace; font-size:7.6pt; white-space:nowrap; margin:0; line-height:1.35; overflow:hidden; }
+  .cmd { white-space:pre !important; overflow:hidden; padding:2.4mm 4mm; margin:2.4mm 0; line-height:1.5; }
+  .r { font-size:9pt; line-height:1.3; color:var(--ox); margin:0 0 1.5mm 0; }
+  .macrun p { font-size:9.6pt; line-height:1.4; margin-bottom:2mm; }
+  .macrun h3 { margin-top:4mm; }
+  .macrun .box p + p { margin-top:2mm; }
+  td { font-size:9.1pt; line-height:1.3; padding:1.4mm 2mm; }
+  p { font-size:10.3pt; line-height:1.46; margin-bottom:2.6mm; }
+  li { font-size:10.3pt; line-height:1.46; }
+  h3 { margin-top:5mm; }
+</style></head><body><div class="page cover"><div><svg width="132" height="132" viewBox="0 0 200 200" style="display:block;margin:0 auto"><circle cx="100" cy="100" r="90" fill="none" stroke="#14110C" stroke-width="3.15"/><circle cx="100" cy="100" r="50.4" fill="none" stroke="#14110C" stroke-width="18"/><circle cx="162.51" cy="35.26" r="10.35" fill="#6E1A18"/></svg><div class="word mono">Outliers</div><h1>Judgement</h1><div class="sub">Layer 5 of 8 &nbsp;&middot;&nbsp; What your system cannot<br>work out on its own.</div><div class="mono" style="font-size:10pt;letter-spacing:.3em;color:#F3EEE3;background:#6E1A18;display:inline-block;padding:2mm 6mm;margin-top:8mm">For Mac</div></div><div style="margin-bottom:15mm"><div class="mono" style="font-size:8.5pt;color:#B08A3E">Est. MMXXVI &nbsp;&middot;&nbsp; Outliers Accelerator</div></div></div><div class="page"><div class="label mono">Layer 5 &middot; Judgement</div><div class="pos"><svg viewBox="0 0 152 20" width="100%"><rect x="0" y="0" width="16" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="19" y="0" width="16" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="38" y="0" width="16" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="57" y="0" width="16" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="76" y="0" width="16" height="7" fill="#14110C" stroke="#14110C" stroke-width="0.4"/><rect x="95" y="0" width="16" height="7" fill="#E7DEC9" stroke="#14110C" stroke-width="0.4"/><rect x="114" y="0" width="16" height="7" fill="#E7DEC9" stroke="#14110C" stroke-width="0.4"/><rect x="133" y="0" width="16" height="7" fill="#E7DEC9" stroke="#14110C" stroke-width="0.4"/><text x="0" y="17" style="font-size:6px;letter-spacing:.14em;fill:#B08A3E">LAYER 5</text></svg></div><h2>Something has to weigh it up</h2><div class="deck">Your system can now tell you what happened. It cannot tell you what any of it means. That needs judgement, and this is the first layer that has any.</div><h3>What the last layer left you with</h3><p>You have a history that fills itself. What you do not have is anything that reads it and forms a view. A program can tell you that somebody replied. It cannot tell you whether the reply was warm, whether the person is worth your time, or what to say next.</p><h3>What this layer builds</h3><p>Assistants. Each one is given a single job, its own written instructions, and permission to use particular tools and nothing else. They read what your system knows, form a view, and hand it to you.</p><figure><svg viewBox="0 0 560 186" width="100%"><defs><marker id="a5" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#6E1A18"/></marker></defs>
+      <text class="tb" x="16" y="16">ONE ASSISTANT DOING EVERYTHING</text>
+      <ellipse cx="104" cy="82" rx="86" ry="44" fill="none" stroke="#14110C" stroke-width="0.9" stroke-dasharray="4 3" opacity=".55"/>
+      <text class="ts" x="58" y="78" opacity=".7">"runs the CRM"</text>
+      <text class="tx" x="40" y="98">fix one job, break another</text>
+      <line x1="200" y1="10" x2="200" y2="176" stroke="#14110C" stroke-width="0.3" opacity=".3"/>
+      <text class="tb" x="214" y="16">SEVERAL, ONE JOB EACH</text>
+      <g fill="#E7DEC9" stroke="#14110C" stroke-width="0.8">
+        <rect x="214" y="26" width="152" height="22"/><rect x="380" y="26" width="166" height="22"/>
+        <rect x="214" y="54" width="152" height="22"/><rect x="380" y="54" width="166" height="22"/>
+        <rect x="214" y="82" width="152" height="22"/><rect x="380" y="82" width="166" height="22"/>
+      </g>
+      <text class="ts" x="223" y="41">reads a conversation</text>
+      <text class="ts" x="389" y="41">scores a new contact</text>
+      <text class="ts" x="223" y="69">drafts a first message</text>
+      <text class="ts" x="389" y="69">summarises a meeting</text>
+      <text class="ts" x="223" y="97">suggests what next</text>
+      <text class="ts" x="389" y="97">tidies your records</text>
+      <text class="tx" x="214" y="126">each one can be tested, corrected or replaced on its own</text>
+      <text class="ts" x="214" y="146">every fact one writes down says where it came from</text>
+      <text class="ts" x="214" y="160">anything it is unsure of waits for you instead of being saved</text>
+    </svg><div class="cap">One job each. Testable one at a time.</div></figure><div class="footer"><span class="mono">Layer 5 &middot; Judgement</span><span class="pgno">2</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 5 &middot; How it works</div><h2>How it works</h2><div class="deck">An assistant is not magic and should not be treated as such. It is a worker you briefed, and you judge it the same way.</div>
+      <h3>What an assistant actually is</h3>
+      <p>A set of written instructions handed to an AI, the same kind you would type a question
+      into, plus one clearly defined job, plus a short list of actions it is allowed to take and
+      nothing outside that list. That is the whole of it. The instructions are a text file you can
+      read and change, so you can see exactly what you asked for.</p>
+      <h3>Judge one the way you would judge a person</h3>
+      <p>You already know what good and bad look like when a human does a job. If you hired someone
+      to go through your contacts and tell you which are worth a call, you would know within 10
+      minutes whether they had understood. Use exactly that instinct here. If the output would
+      annoy you coming from a person, it is not acceptable coming from an assistant either.</p>
+      <h3>One job each, never one big one</h3>
+      <p>The tempting choice is a single assistant that does everything. It cannot be tested in
+      parts, and correcting one behaviour changes another you never touched. Several small ones can
+      each be checked, improved or thrown away on their own.</p>
+      <h3>Every fact says where it came from</h3>
+      <p>An assistant that is right and an
+      assistant that has invented something produce output that looks identical. Same confidence,
+      same tidy sentences. A week later you cannot tell which is which by reading it.</p>
+      <p>So nothing gets written into your records without saying where it came from and when. If
+      the evidence is thin, it is not saved at all: it waits in a list for you to look at. Your
+      records stay a record of what is true, and everything uncertain stays visibly
+      uncertain.</p><div class="footer"><span class="mono">Layer 5 &middot; Judgement</span><span class="pgno">3</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 5 &middot; Before you start</div><h2>Before you start on a Mac</h2><p>Everything in this guide is typed into <strong>Terminal</strong>, the Mac's window for typing commands instead of clicking. Press Command and Space together, type Terminal, and press Return.</p><p>This layer needs Python and git, which you set up for Layer 1 (its page "Before you start on a Mac"), and the layers before this one. It installs no add-ons, so it works with either Python a Mac may have.</p><h3>How to type the lines</h3><p>Where this guide shows several lines in a black box, type them one at a time: type the first, press Return, wait for it to finish and give you a fresh line, then type the next. The installer asks you questions. Each offers an answer in [square brackets]; press Return to take it, or type your own and press Return.</p><h3>Where your CRM is</h3><p>Layer 1 made your CRM at <strong>~/CRM</strong>: a folder called CRM in your home folder (the folder with your name and the house picture in Finder's sidebar). If you chose another folder in Layer 1, put your own folder wherever a line in this guide says ~/CRM. The installer finds your CRM by itself either way.</p><p><strong>Apple Silicon or Intel</strong> (the 2 kinds of chip a Mac can have; the Apple menu, then About This Mac, shows yours): the steps are the same on both, and both were tested.</p><p><strong>Tried only on test Macs.</strong> Mac test for this version not yet recorded.</p><div class="footer"><span class="mono">Layer 5 &middot; Judgement</span><span class="pgno">4</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 5 &middot; Install</div><h2>Build it</h2><div class="deck">3 lines, typed into Terminal. The last one asks you a few questions so what you get is yours, then does the work.</div><div class="cmd">git clone https://github.com/OUTLIERS-ai/outliers-crm-05-judgement-mac<br>cd outliers-crm-05-judgement-mac<br>python3 install.py</div><p>This layer needs Layers 1 to 4. There has to be something in your history for an assistant to read.</p><h3>What it asks you, and why</h3><table><tr><th style="width:52mm">Question</th><th>What it changes</th></tr><tr><td class="k">What makes someone a good fit for you, in your own words?</td><td>Written as you would say it out loud. The assistant is given your definition, not a generic one, so it is scoring for your business.</td></tr><tr><td class="k">What would make you drop someone?</td><td>Just as useful as the positive version, and usually easier to answer honestly.</td></tr></table><h3>What you end up with</h3><ul><li>A worked assistant with one job, whose instructions you can read and edit.</li><li>The rule that everything written carries its source, applied automatically.</li><li>A review list where anything uncertain waits for you instead of entering your records.</li></ul><div class="footer"><span class="mono">Layer 5 &middot; Install</span><span class="pgno">5</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 5 &middot; Finishing</div><h2>Now use it</h2><div class="deck">10 minutes, and it will tell you something about your own contacts.</div><p>Let the assistant score the people in your CRM against the definition you gave it.</p><p>Then find one you disagree with, and read the reason it gave. One of 2 explanations is true: either it misread something, which tells you the instructions need a sentence adding, or it spotted something you had not, which is the whole reason you built it.</p><h3>If you already had something like this</h3><p>Your test: take one fact your current assistant or tool has told you and try to find out where the information came from. If you cannot trace it back to a source, you do not know whether it is true.</p><hr class="rule"><h3>What this layer leaves unsolved</h3><p>You now have several assistants working, and any one of them could put a message in front of a real human being. Nothing is stopping 2 of them acting at once, or one of them checking its own work and passing it. That needs control which does not depend on them behaving well.</p><div class="box"><span class="mono">Next: Layer 6 &middot; Order and safety</span><p>Sequence, limits, and the rule that nothing reaches another person without your hand on it. Built into the machinery rather than written in the instructions.</p></div><h3>Words used in this guide</h3><table><tr><td class="k">AI model</td><td>The kind of AI you type a question into and get an answer back from.</td></tr><tr><td class="k">Assistant</td><td>Written instructions, plus one clearly defined job, plus a short list of actions it may take.</td></tr><tr><td class="k">Tool</td><td>One specific action an assistant is allowed to take. Not an app.</td></tr><tr><td class="k">Source</td><td>Where a fact came from, recorded next to the fact itself.</td></tr><tr><td class="k">Review list</td><td>Where uncertain proposals wait for you, instead of being saved as true.</td></tr><tr><td class="k">Staging</td><td>Where anything uncertain waits for you, instead of being saved as true.</td></tr></table><div class="footer"><span class="mono">Layer 5 &middot; Judgement</span><span class="pgno">6</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 5 &middot; What was run on a Mac</div><div class="macrun"><h2>What was run on a Mac</h2><p>A <b>test Mac</b> is one of the Macs GitHub rents out by the minute to run a script.</p><p>Mac test for this version not yet recorded.</p><div class="box"><span class="mono">NOT RUN ON THE TEST MACS</span><p>The box asking to install the developer tools cannot appear on a test Mac, because GitHub's Macs already have them.</p><p>The assistant itself. It runs inside Claude Code, which needs your own Claude Code login. The script ran the checker that reads its instructions file.</p></div></div><div class="footer"><span class="mono">Layer 5 &middot; Judgement</span><span class="pgno">7</span><span class="mono">Outliers</span></div></div></body></html>

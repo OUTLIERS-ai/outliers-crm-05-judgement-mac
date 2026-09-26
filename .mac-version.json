@@ -1,0 +1,73 @@
+{
+  "main": "outliers-crm-05-judgement",
+  "main_commit": "7cd2e82f828c51197153c5c9c5345812d6fef452",
+  "mac": "outliers-crm-05-judgement-mac",
+  "macgen_commit": "50a7935",
+  "date": "2026-09-26",
+  "fingerprint": "8a8a51d6db69930d5c2566d3033accb884b86c680392d8646031aa2e581f6d23",
+  "left_out_of_fingerprint": [
+    ".mac-version.json",
+    "guide/Layer-5-Judgement (Mac).pdf",
+    "guide/Layer-5-Judgement.html"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "category": "same",
+      "sha256": "271540188ae129e9d99d3a8ad965db71df8c7cd7abfacb3580f60a5b61de5c1a"
+    },
+    {
+      "path": "README.md",
+      "category": "changed",
+      "sha256": "abb6383a1692f22247532f7e64098b3b027a3fd7ded91a0b3bde1a8f1bb92f9e"
+    },
+    {
+      "path": "WHAT-I-STOLE.md",
+      "category": "same",
+      "sha256": "3e0e3c91432819fae56e79e70094cb277ec470e707f4e6900bf671e9c7bf73cc"
+    },
+    {
+      "path": "agents/TEMPLATE-agent.md",
+      "category": "same",
+      "sha256": "69d3a84780356668a6b54a1711681b8cb94e0b18c66ffd21071d952ceaadeeeb"
+    },
+    {
+      "path": "agents/example-fit-scorer.md",
+      "category": "same",
+      "sha256": "66e02523006c5e518a5807548d7341f9181e811886fabaa1e1cde29cd9534ecf"
+    },
+    {
+      "path": "engine/agent_check.py",
+      "category": "same",
+      "sha256": "2af43acc1c0a22a038262efe9ce0ad86b272ce9c325f63195e657d84d6183346"
+    },
+    {
+      "path": "engine/provenance.py",
+      "category": "same",
+      "sha256": "cd230071496bef1b72e8f46e756c5e93c7c43c3c2d2701a0467a1d8e478e5a34"
+    },
+    {
+      "path": "guide/Layer-5-Judgement (Mac).pdf",
+      "category": "left out of the fingerprint"
+    },
+    {
+      "path": "guide/Layer-5-Judgement.html",
+      "category": "left out of the fingerprint"
+    },
+    {
+      "path": "install.py",
+      "category": "same",
+      "sha256": "64a4712f0958f5b0216fa39c2047cfae0f14731008c687f7f056fa6707a7f445"
+    },
+    {
+      "path": "tests/test_agent_definitions.py",
+      "category": "same",
+      "sha256": "f036e599cfcb26edc2b1b459cb0f43395b28299fa190061a5d145132cdcb1c4d"
+    },
+    {
+      "path": "tests/test_provenance_and_staging.py",
+      "category": "same",
+      "sha256": "0479b7cd8b935ddafe2a9725cfa7ee0c8a854efa21a9a158942fc97c5f979853"
+    }
+  ]
+}
